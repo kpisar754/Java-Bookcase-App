@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Logout</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/index style.css}"/>
+</head>
+<body>
+<h1>Bookcase Application : Library</h1>
+<h2>Please confirm log-out</h2>
+<hr>
+<br>
+<br>
+<div class="button-position">
+    <form th:action="@{/logout_form}" method="post" >
+        <button type="submit" class="squares">Log Out</button>
+    </form>
+</div>
+</body>
+</html>

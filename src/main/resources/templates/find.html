@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Find Book</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/index style.css}"/>
+</head>
+<body>
+    <h1>Bookcase Application</h1>
+    <h2>Library Search Result</h2>
+    <hr>
+    <div class="content-position">
+        <table>
+            <thead>
+            <tr class="header">
+                <th th:text="#{book.id}">Book Id</th>
+                <th th:text="#{book.author}">Author</th>
+                <th th:text="#{book.title}">Title</th>
+                <th th:text="#{book.category}">Category</th>
+                <th th:text="#{book.releaseYear}">Released</th>
+                <th th:text="#{book.editionNumber}">Edition</th>
+                <th th:text="#{book.forKids}">For Kids?</th>
+                <th th:text="#{book.dateAddedToResources}"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="content" th:each="book,iterStat: ${books}">
+                <td th:text="${book.id}"></td>
+                <td th:text="${'AuthID:['+book.author.id+'] '+book.author.firstName+' '+book.author.lastName+', '+book.author.countryOfOrigin+', '+book.author.literaryEpoch+', '+book.author.centuryHeOrSheCreated}"></td>
+                <td th:text="${book.title}"></td>
+                <td th:text="${book.category.name()}"></td>
+                <td th:text="${book.releaseYear}"></td>
+                <td th:text="${book.editionNumber}"></td>
+                <td>
+                    <p th:if="${book.forKids}">yes</p>
+                    <p th:unless="${book.forKids}">no</p>
+                </td>
+                <td th:text="${book.dateAddedToResources}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <hr>
+    <div class="button-position">
+        <a href="/">
+            <button class="squares">Go Back to Main Page</button>
+        </a>
+    </div>
+</body>
+</html>

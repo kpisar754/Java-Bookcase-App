@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>AddResourceForm</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/index style.css}"/>
+</head>
+<body>
+<h1>Bookcase Application : Library</h1>
+<h2>Add Resource</h2>
+<hr>
+<br>
+<div class="menu">
+    <form action="#" th:action="@{/api/books/add}" th:object="${form}" method="post">
+        <br>
+        <br>
+        <h3>Author:</h3>
+        <hr>
+        <br>
+        <div>
+            <label for="id" th:text="#{author.id} + ' *'"></label>&nbsp;
+            <input class="addFrom" type="text" id="id" th:field="*{author.id}" required>
+        </div>
+        <br>
+        <div>
+            <label for="firstName" th:text="#{author.firstName}"></label>&nbsp;&nbsp;
+            <input class="addFrom" type="text" id="firstName" th:field="*{author.firstName}" required>
+        </div>
+        <br>
+        <div>
+            <label for="lastName" th:text="#{author.lastName}"></label>&nbsp;&nbsp;
+            <input class="addFrom" type="text" id="lastName" th:field="*{author.lastName}" required>
+        </div>
+        <br>
+        <div>
+            <label for="country" th:text="#{author.countryOfOrigin}"></label>&nbsp;&nbsp;
+            <input class="addFrom" type="text" id="country" th:field="*{author.countryOfOrigin}" required>
+        </div>
+        <br>
+        <div>
+            <label for="epoch" th:text="#{author.literaryEpoch}"></label>&nbsp;&nbsp;
+            <select class="addFrom" id="epoch" th:field="*{author.literaryEpoch}" required>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Epoch).NOT_CLASSIFIED}">NOT CLASSIFIED</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Epoch).ANTIQUITY}">ANTIQUITY</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Epoch).MIDDLE_AGES}">MIDDLE_AGES</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Epoch).RENAISSANCE}">RENAISSANCE</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Epoch).BAROQUE}">BAROQUE</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Epoch).ENLIGHTENMENT}">ENLIGHTENMENT</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Epoch).ROMANTICISM}">ROMANTICISM</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Epoch).REALISM}">REALISM</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Epoch).MODERNISM}">MODERNISM</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Epoch).INTER_WAR_PERIOD}">INTER WAR PERIOD</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Epoch).MODERN_LITERATURE}">MODERN LITERATURE</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Epoch).NOVELTIES_BESTSELLERS}">NOVELTIES BESTSELLERS</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <label for="century" th:text="#{author.centuryHeOrSheCreated}"></label>&nbsp;&nbsp;
+            <select class="addFrom" name="century" id="century" th:field="*{author.centuryHeOrSheCreated}" required>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Century).NOT_CLASSIFIED}">NOT CLASSIFIED</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Century).EARLIER_THAN_XVI_CENTURY}">EARLIER THAN XVI CENTURY</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Century).XVI_CENTURY}">XVI CENTURY</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Century).XVII_CENTURY}">XVII CENTURY</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Century).XVIII_CENTURY}">XVIII CENTURY</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Century).XIX_CENTURY}">XIX CENTURY</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Century).XX_CENTURY}">XX CENTURY</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Century).XXI_CENTURY}">XXI CENTURY</option>
+            </select>
+            <br>
+            <br>
+            <span><br/>* you need to change this to AuthID value (below) when you add new book for author existing in database</span>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <br>
+        <h3>Books:</h3>
+        <hr>
+        <br>
+        <div>
+            <label for="author" th:text="#{book.author}"></label>&nbsp;&nbsp;
+            <select class="addFrom" id="author" name="author.id">
+                <option th:value="${null}">-- Select an author --</option>
+                <option th:each="author : ${authors}" th:value="${author.id}" th:text="'AuthID:[' + ${author.id + '] ' +author.firstName + ' ' + author.lastName}"></option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <label for="title" th:text="#{book.title}"></label>&nbsp;&nbsp;
+            <input class="addFrom" type="text" id="title" th:field="*{book.title}" required>
+        </div>
+        <br>
+        <div>
+            <label for="category" th:text="#{book.category}"></label>&nbsp;&nbsp;
+            <select class="addFrom" name="category" id="category" th:field="*{book.category}">
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).NOT_CLASSIFIED}">NOT CLASSIFIED</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).BELLES_LETTRES}">BELLES-LETTRES</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).DRAMA_ROMANCE}">DRAMA ROMANCE</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).PUBLICISTICS_BIOGRAPHY}">PUBLICISTICS BIOGRAPHY</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).CRIME_SENSATION_THRILLER}">CRIME SENSATION THRILLER</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).FANTASTIC_SCIENCE_FICTION}">FANTASTIC SCIENCE-FICTION</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).HORROR_MYSTERY}">HORROR MYSTERY</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).TRAVEL_AND_ADVENTURE}">TRAVEL AND ADVENTURE</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).HISTORICAL}">HISTORICAL</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).ENCYCLOPEDIAS_GUIDEBOOKS}">ENCYCLOPEDIAS GUIDEBOOKS</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).EXACT_SCIENCE_MODERN_TECHNOLOGIES}">EXACT SCIENCE AND MODERN TECHNOLOGIES</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <label for="year" th:text="#{book.releaseYear}"></label>&nbsp;&nbsp;
+            <input class="addFrom" type="text" id="year" th:field="*{book.releaseYear}" required>
+        </div>
+        <br>
+        <div>
+            <label for="edition" th:text="#{book.editionNumber}"></label>&nbsp;&nbsp;
+            <input class="addFrom" type="text" id="edition" th:field="*{book.editionNumber}" required>
+        </div>
+        <br>
+        <div>
+            <label for="forKids" th:text="#{book.forKids}"></label>&nbsp;&nbsp;
+            <select class="addFrom" name="forKids" id="forKids" th:field="*{book.forKids}">
+                <option th:value="false">NO</option>
+                <option th:value="true">YES</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <label for="dateAdded" th:text="#{book.dateAddedToResources}"></label>&nbsp;&nbsp;
+            <input class="addFrom" type="text" id="dateAdded" th:field="*{book.dateAddedToResources}" readonly>
+        </div>
+        <br>
+        <br>
+        <hr>
+        <br>
+        <br>
+        <button type="submit" class="squares">Add Author And Book</button>
+    </form>
+</div>
+<hr>
+<div class="button-position">
+    <a href="/">
+        <button class="squares">Go Back to Main Page</button>
+    </a>
+</div>
+</body>
+</html>

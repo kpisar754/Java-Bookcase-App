@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error Page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/index style.css}"/>
+</head>
+<body>
+<h1>Bookcase Application : Library</h1>
+<h2>Access denied</h2>
+<hr>
+<br>
+<br>
+<div class="menu">
+<h3>Error: <span th:text="${statusCode}"></span></h3>
+<p th:text="${errorMessage}"></p>
+<p th:text="${exception?.message}"></p>
+</div>
+<br>
+<br>
+<div class="button-position">
+    <a href="/">
+        <button class="squares">Go Back to Main Page</button>
+    </a>
+</div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Ex6_Bookcase</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/index style.css}"/>
+</head>
+<body>
+<div>
+    <h1>Bookcase Application</h1>
+        <div class="button-container">
+            <a href="/login_form" class="button">Login</a>
+            <a href="/logout_form" class="button">Logout</a>
+        </div>
+</div>
+    <h2 th:text="${message}"></h2>
+    <hr>
+<br>
+<br>
+<br>
+    <div class="library">
+        <img class="photo" th:src="biblioteka.png" th:alt="biblioteka_Adelaida_Australia">
+    </div>
+    <div class="menu">
+    <div>
+        <br>
+        <br>
+        <br>
+        <form style="display: inline-block;" th:action="@{/admin/api/books/library/}" method="get">
+            <input class="squares" type="submit" value="Our Library">
+        </form>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <form style="display: inline-block;" th:action="@{/admin/api/books/add}" method="get">
+            <input class="squares" type="submit" value="Add Resource">
+        </form>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <form style="display: inline-block;" th:action="@{/api/book/random}" method="get">
+            <input class="squares" type="submit" value="Book For Today">
+        </form>
+        <br>
+        <br>
+        <hr>
+        <br>
+    </div>
+        <div>
+            <form style="display: inline-block;" th:action="@{/public/api/books/library/lastName}" method="get">
+                <input class="square-title" type="search" name="lastName" placeholder="Search Author by Name">
+                <input class="squares" type="submit" value="Search">
+            </form>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <form style="display: inline-block;" th:action="@{/api/books/library/country}" method="get">
+                <input class="square-title" type="search" name="country" placeholder="Search Author By Country">
+                <input class="squares" type="submit" value="Search">
+            </form>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <form style="display: inline-block;" th:action="@{/api/books/library/literaryEpoch}" method="get">
+                <select class="square-title" type="search" name="literaryEpoch">
+                    <option th:value="${T(com.infoshare.bookcase.dictionary.Epoch).NOT_CLASSIFIED}">NOT CLASSIFIED</option>
+                    <option th:value="${T(com.infoshare.bookcase.dictionary.Epoch).ANTIQUITY}">ANTIQUITY</option>
+                    <option th:value="${T(com.infoshare.bookcase.dictionary.Epoch).MIDDLE_AGES}">MIDDLE_AGES</option>
+                    <option th:value="${T(com.infoshare.bookcase.dictionary.Epoch).RENAISSANCE}">RENAISSANCE</option>
+                    <option th:value="${T(com.infoshare.bookcase.dictionary.Epoch).BAROQUE}">BAROQUE</option>
+                    <option th:value="${T(com.infoshare.bookcase.dictionary.Epoch).ENLIGHTENMENT}">ENLIGHTENMENT</option>
+                    <option th:value="${T(com.infoshare.bookcase.dictionary.Epoch).ROMANTICISM}">ROMANTICISM</option>
+                    <option th:value="${T(com.infoshare.bookcase.dictionary.Epoch).REALISM}">REALISM</option>
+                    <option th:value="${T(com.infoshare.bookcase.dictionary.Epoch).MODERNISM}">MODERNISM</option>
+                    <option th:value="${T(com.infoshare.bookcase.dictionary.Epoch).INTER_WAR_PERIOD}">INTER WAR PERIOD</option>
+                    <option th:value="${T(com.infoshare.bookcase.dictionary.Epoch).MODERN_LITERATURE}">MODERN LITERATURE</option>
+                    <option th:value="${T(com.infoshare.bookcase.dictionary.Epoch).NOVELTIES_BESTSELLERS}">NOVELTIES BESTSELLERS</option>
+                </select>
+                <input class="squares" type="submit" value="Search By Epoch">
+            </form>
+        </div>
+    <div>
+        <form style="display: inline-block;" th:action="@{/api/book/find}" method="get">
+            <input class="square-title" type="search" name="title" placeholder="Search Book by Title">
+            <input class="squares" type="submit" value="Search">
+        </form>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <form style="display: inline-block;" th:action="@{/api/book/category/find}" method="get">
+            <select class="square-title" type="search" name="category">
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).NOT_CLASSIFIED}">NOT CLASSIFIED</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).BELLES_LETTRES}">BELLES-LETTRES</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).DRAMA_ROMANCE}">DRAMA ROMANCE</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).PUBLICISTICS_BIOGRAPHY}">PUBLICISTICS BIOGRAPHY</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).CRIME_SENSATION_THRILLER}">CRIME SENSATION THRILLER</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).FANTASTIC_SCIENCE_FICTION}">FANTASTIC SCIENCE-FICTION</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).HORROR_MYSTERY}">HORROR MYSTERY</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).TRAVEL_AND_ADVENTURE}">TRAVEL AND ADVENTURE</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).HISTORICAL}">HISTORICAL</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).ENCYCLOPEDIAS_GUIDEBOOKS}">ENCYCLOPEDIAS GUIDEBOOKS</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).EXACT_SCIENCE_MODERN_TECHNOLOGIES}">EXACT SCIENCE AND MODERN TECHNOLOGIES</option>
+            </select>
+            <input class="squares" type="submit" value="Search By Category">
+        </form>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <form style="display: inline-block;" th:action="@{/api/book/for_kids/find}" method="get">
+            <select class="square-title" type="search" name="forKids">
+                <option th:value="false">NO</option>
+                <option th:value="true">YES</option>
+            </select>
+            <input class="squares" type="submit" value="Search Book For Kids">
+        </form>
+    </div>
+        <br>
+        <br>
+    </div>
+    <div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>

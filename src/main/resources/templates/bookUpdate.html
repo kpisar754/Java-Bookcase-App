@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Book From</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/index style.css}"/>
+</head>
+<body>
+<h1>Bookcase Application : Library</h1>
+<h2>Edit Book Info</h2>
+<hr>
+<br>
+<div class="menu">
+    <form action="#" th:action="@{/book/update/{id}(id=${book.id})}" th:object="${book}" method="get">
+        <br>
+        <br>
+        <h3>Book:</h3>
+        <hr>
+        <br>
+        <div>
+            <label for="id" th:text="#{book.id}"></label>&nbsp;&nbsp;
+            <input class="addFrom" type="text" id="id" th:field="*{id}" readonly>
+        </div>
+        <br>
+        <div>
+            <label for="title" th:text="#{book.title}"></label>&nbsp;&nbsp;
+            <input class="addFrom" type="text" id="title" th:field="*{title}" required>
+        </div>
+        <br>
+        <div>
+            <label for="category" th:text="#{book.category}"></label>&nbsp;&nbsp;
+            <select class="addFrom" name="category" id="category" th:field="*{category}">
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).NOT_CLASSIFIED}">NOT CLASSIFIED</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).BELLES_LETTRES}">BELLES-LETTRES</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).DRAMA_ROMANCE}">DRAMA ROMANCE</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).PUBLICISTICS_BIOGRAPHY}">PUBLICISTICS BIOGRAPHY</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).CRIME_SENSATION_THRILLER}">CRIME SENSATION THRILLER</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).FANTASTIC_SCIENCE_FICTION}">FANTASTIC SCIENCE-FICTION</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).HORROR_MYSTERY}">HORROR MYSTERY</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).TRAVEL_AND_ADVENTURE}">TRAVEL AND ADVENTURE</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).HISTORICAL}">HISTORICAL</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).ENCYCLOPEDIAS_GUIDEBOOKS}">ENCYCLOPEDIAS GUIDEBOOKS</option>
+                <option th:value="${T(com.infoshare.bookcase.dictionary.Category).EXACT_SCIENCE_MODERN_TECHNOLOGIES}">EXACT SCIENCE AND MODERN TECHNOLOGIES</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <label for="year" th:text="#{book.releaseYear}"></label>&nbsp;&nbsp;
+            <input class="addFrom" type="text" id="year" th:field="*{releaseYear}" required>
+        </div>
+        <br>
+        <div>
+            <label for="edition" th:text="#{book.editionNumber}"></label>&nbsp;&nbsp;
+            <input class="addFrom" type="text" id="edition" th:field="*{editionNumber}" required>
+        </div>
+        <br>
+        <div>
+            <label for="forKids" th:text="#{book.forKids}"></label>&nbsp;&nbsp;
+            <select class="addFrom" name="forKids" id="forKids" th:field="*{forKids}">
+                <option th:value="false">NO</option>
+                <option th:value="true">YES</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <label for="dateAdded" th:text="#{book.dateAddedToResources}"></label>&nbsp;&nbsp;
+            <input class="addFrom" type="text" id="dateAdded" th:field="*{dateAddedToResources}" readonly>
+        </div>
+        <br>
+        <br>
+        <hr>
+        <br>
+        <button type="submit" class="squares">Update Book Info</button>
+    </form>
+</div>
+<hr>
+<div class="button-position">
+    <a href="/">
+        <button class="squares">Go Back to Main Page</button>
+    </a>
+</div>
+</body>
+</html>

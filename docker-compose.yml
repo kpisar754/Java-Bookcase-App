@@ -1,0 +1,13 @@
+db:
+  image: mysql:8
+  container_name: bookcase_mysql_db
+  volumes:
+    - db_data:/var/lib/mysql
+  restart: always
+  environment:
+    MYSQL_ROOT_PASSWORD: secretRootPassword
+    MYSQL_DATABASE: bookcase
+    MYSQL_USER: bookcaseUser
+    MYSQL_PASSWORD: superSecretPassword
+  ports:
+    - "3306:3306"
