@@ -44,7 +44,7 @@ public class Book {
     @Column(name = "release_year", nullable = false)
     private Integer releaseYear;
 
-    @Column(name = "edition", nullable = false)
+    @Column(name = "edition")
     private String editionNumber;
 
     @Column(name = "for_kids", nullable = false)

@@ -34,7 +34,7 @@ public class Author {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "first_name", nullable = false)
+    @Column(name = "first_name")
     private String firstName;
 
     @Column(name = "last_name", nullable = false)

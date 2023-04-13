@@ -123,7 +123,10 @@ public class BookcaseService {
     public BookDto provideRandomBook() {
         List<Book> allBooks = bookRepository.findAll();
         if (allBooks.isEmpty()) {
-            return BookDto.fromBook(new Book());
+            Book emptyBook = new Book();
+            emptyBook.setCategory(Category.NOT_CLASSIFIED);
+            emptyBook.setAuthor(new Author());
+            return BookDto.fromBook(emptyBook);
         } else {
             int index = generator.nextInt(allBooks.size());
             return BookDto.fromBook(allBooks.get(index));
