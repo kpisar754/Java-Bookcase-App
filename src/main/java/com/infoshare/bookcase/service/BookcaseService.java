@@ -57,6 +57,7 @@ public class BookcaseService {
         return authorRepository.findById(id);
     }
 
+    @Transactional
     public Book findBookById(UUID id) {
         return bookRepository.findById(id);
     }
@@ -95,7 +96,7 @@ public class BookcaseService {
         return AuthorDto.fromAuthorsList(authorRepository.findAll());
     }
 
-    public Long getNextAuthorId() {
+    private Long getNextAuthorId() {
         return authorRepository.getNextId();
     }
 
